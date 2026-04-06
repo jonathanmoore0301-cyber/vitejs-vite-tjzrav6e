@@ -282,34 +282,46 @@ export default function App() {
 
   if (!session) {
     return (
-      <div style={styles.centerScreen}>
-        <div style={styles.card}>
-          <h1 style={styles.title}>NERDI Admin Login</h1>
-          <p style={styles.subtitle}>Authorized access only</p>
-
-          <form onSubmit={handleLogin} style={styles.form}>
+      <div style={loginStyles.container}>
+        <div style={loginStyles.card}>
+  
+          <div style={loginStyles.logoSection}>
+            <img
+              src="/icon-192.png"
+              alt="NERDI Logo"
+              style={loginStyles.logo}
+            />
+            <h1 style={loginStyles.title}>NERDI</h1>
+            <p style={loginStyles.subtitle}>
+              Smart IT. Smarter Solutions.
+            </p>
+          </div>
+  
+          <form onSubmit={handleLogin} style={loginStyles.form}>
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Email address"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              style={styles.input}
+              style={loginStyles.input}
               required
             />
+  
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              style={styles.input}
+              style={loginStyles.input}
               required
             />
-            <button type="submit" style={styles.button}>
+  
+            <button type="submit" style={loginStyles.button}>
               Sign In
             </button>
           </form>
-
-          {message && <p style={styles.error}>{message}</p>}
+  
+          {message && <p style={loginStyles.error}>{message}</p>}
         </div>
       </div>
     )
@@ -539,6 +551,75 @@ export default function App() {
       </main>
     </div>
   )
+}
+
+const loginStyles = {
+  container: {
+    minHeight: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: 'linear-gradient(135deg, #f8fafc, #e2e8f0)',
+    padding: '20px',
+  },
+  card: {
+    width: '100%',
+    maxWidth: '420px',
+    background: '#ffffff',
+    borderRadius: '20px',
+    padding: '40px 32px',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
+    textAlign: 'center',
+  },
+  logoSection: {
+    marginBottom: '28px',
+  },
+  logo: {
+    width: '70px',
+    marginBottom: '14px',
+  },
+  title: {
+    margin: 0,
+    fontSize: '28px',
+    fontWeight: '700',
+    letterSpacing: '1px',
+    color: '#0f172a',
+  },
+  subtitle: {
+    marginTop: '6px',
+    fontSize: '14px',
+    color: '#64748b',
+    letterSpacing: '0.5px',
+  },
+  form: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    marginTop: '10px',
+  },
+  input: {
+    padding: '14px',
+    borderRadius: '12px',
+    border: '1px solid #cbd5e1',
+    fontSize: '15px',
+    transition: 'all 0.2s ease',
+  },
+  button: {
+    padding: '14px',
+    borderRadius: '12px',
+    border: 'none',
+    background: '#2563eb',
+    color: '#ffffff',
+    fontSize: '16px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    marginTop: '6px',
+  },
+  error: {
+    marginTop: '16px',
+    color: '#dc2626',
+    fontSize: '14px',
+  },
 }
 
 const styles = {
